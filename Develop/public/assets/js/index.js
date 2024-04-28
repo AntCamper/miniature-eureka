@@ -1,3 +1,5 @@
+const { v4: uuidv4 } = require('uuid'); 
+
 let noteForm;
 let noteTitle;
 let noteText;
@@ -74,14 +76,16 @@ const renderActiveNote = () => {
 
 const handleNoteSave = () => {
   const newNote = {
-    title: noteTitle.value,
-    text: noteText.value
+     id: uuidv4(),
+     title: noteTitle.value,
+     text: noteText.value
   };
   saveNote(newNote).then(() => {
-    getAndRenderNotes();
-    renderActiveNote();
+     getAndRenderNotes();
+     renderActiveNote();
   });
-};
+ };
+ 
 
 // Delete the clicked note
 const handleNoteDelete = (e) => {
